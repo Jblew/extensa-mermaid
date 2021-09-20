@@ -53,8 +53,12 @@ export default class ExtensaMermaidView extends Vue {
     this.loading = true;
     this.error = "";
     const resolvedConfigURL = this.resolveConfigURL();
+    console.log(
+      `Extensa-mermaid-view loading config from ${resolvedConfigURL}`
+    );
     try {
       this.config = await fetch(resolvedConfigURL).then((resp) => resp.json());
+      console.log(`Extensa-mermaid-view rendering:`, this.config);
     } catch (err) {
       console.error(
         `extensa-mermaid cannot load config from ${resolvedConfigURL}`,

@@ -18,11 +18,12 @@ COPY --from=gucci /bin/gucci /bin/gucci
 COPY --from=builder /app/dist/* /srv/
 ADD public/schema.json /srv/
 ADD public/mocks /srv/mocks
+ADD public/demo.html /srv/index.html
 ADD Caddyfile.template /etc/caddy/Caddyfile.template
 
 ENV SCHEMAVERCHECK_SCHEMA_FILE=/srv/schema.json
 CMD ["/bin/sh", "-c", "\
-    schemaver-check --data-file /srv/mocks/mermaid.json --definition-name \"Mermaid\" && \
+    schemaver-check --data-file /srv/mocks/feedback.json --definition-name \"Mermaid\" && \
     gucci /etc/caddy/Caddyfile.template > /etc/caddy/Caddyfile && \
     cat /etc/caddy/Caddyfile && \
     caddy run --config /etc/caddy/Caddyfile --adapter caddyfile \
