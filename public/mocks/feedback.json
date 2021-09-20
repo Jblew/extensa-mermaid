@@ -1,0 +1,5 @@
+{
+  "mermaid": {
+    "mermaid": "graph LR\n    FillFeedback[Employee fills<br /> feedback form] --> Approve[HR checks compliancy<br />with Feedback Rules]\n    Approve -->|Approved| Appears[Posted on<br />Feedback wall]"
+  }
+}
